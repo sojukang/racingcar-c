@@ -21,7 +21,7 @@ bool canMove(int number) {
 
 void move(struct Car *car) {
     if (canMove(randomNumber())) {
-        car -> position += 1;
+        car->position += 1;
     }
 }
 
@@ -32,15 +32,14 @@ void moveAll(struct Car cars[]) {
     }
 }
 
+
 int main() {
     setRandomSeed();
-    struct Car cars[2];
-    cars[0].position = 1;
-    cars[1].position = 1;
-
+    struct Car *cars = getCars(2);
     moveAll(cars);
 
     printf("%d\n", cars[0].position);
     printf("%d", cars[1].position);
+    free(cars);
     return 0;
 }
