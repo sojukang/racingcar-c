@@ -3,7 +3,7 @@ project(racingcar C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(racingcar main.c)
+add_executable(racingcar main.c modules/car.h)
 add_subdirectory(modules)
 add_subdirectory(tests)
 

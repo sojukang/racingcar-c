@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include "modules/car.h"
 
 void setRandomSeed() {
     srand(time(NULL));
@@ -18,15 +19,16 @@ bool canMove(int number) {
     return false;
 }
 
-int move(int position) {
+void move(struct Car *car) {
     if (canMove(randomNumber())) {
-        return position + 1;
+        car -> position += 1;
     }
-    return position;
 }
 
 int main() {
     setRandomSeed();
-    printf("%d", move(1));
+    struct Car car = {1};
+    move(&car);
+    printf("%d", car.position);
     return 0;
 }
