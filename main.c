@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include "modules/car.h"
 #include "modules/random.h"
-#include <string.h>
+#include "modules/request.h"
 
 #define ARRAY_SIZE(array) (sizeof(&array) / sizeof((array)[0]))
 
@@ -55,18 +55,12 @@ bool *getIsWinners(struct Car cars[]) {
     return isWinners;
 }
 
-char* getCarNames() {
-    char* input = NULL;
-    size_t size = 0;
-    getline(&input, &size, stdin);
-    return input;
-}
 
 int main() {
     setRandomSeed();
-    printf("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).\n");
-    char *carNames = getCarNames();
 
+    char **carNames = getCarNames();
+    int gameCount = getGameCount();
     struct Car *cars = getCars(2);
     moveAll(cars);
 
@@ -79,8 +73,9 @@ int main() {
             printf("%d\n", i);
         }
     }
+
+    free(carNames);
     free(isWinners);
     free(cars);
-    free(carNames);
     return 0;
 }
