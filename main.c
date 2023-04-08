@@ -1,16 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <stdbool.h>
 #include "modules/car.h"
-
-void setRandomSeed() {
-    srand(time(NULL));
-}
-
-int randomNumber() {
-    return rand() % 10;
-}
+#include "modules/random.h"
 
 bool canMove(int number) {
     if (number >= 4) {
