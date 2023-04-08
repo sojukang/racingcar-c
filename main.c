@@ -4,6 +4,8 @@
 #include "modules/car.h"
 #include "modules/random.h"
 
+#define ARRAY_SIZE(array) (sizeof(&array) / sizeof((array)[0]))
+
 bool canMove(int number) {
     if (number >= 4) {
         return true;
@@ -24,6 +26,33 @@ void moveAll(struct Car cars[]) {
     }
 }
 
+bool *getIsWinners(struct Car cars[]) {
+    int size = sizeof(&cars) / sizeof(cars[0]);
+    int maxPosition = cars[0].position;
+    for (int i = 0; i < size; ++i) {
+        if (cars[i].position > maxPosition) {
+            maxPosition = cars[i].position;
+        }
+    }
+
+    int maxCount = 0;
+    for (int i = 0; i < size; ++i) {
+        if (cars[i].position == maxPosition) {
+            maxCount++;
+        }
+    }
+
+    bool *isWinners = malloc(size * sizeof(bool));
+
+    for (int i = 0; i < size; ++i) {
+        if (cars[i].position == maxPosition) {
+            isWinners[i] = true;
+        } else {
+            isWinners[i] = false;
+        }
+    }
+    return isWinners;
+}
 
 int main() {
     setRandomSeed();
@@ -31,7 +60,15 @@ int main() {
     moveAll(cars);
 
     printf("%d\n", cars[0].position);
-    printf("%d", cars[1].position);
+    printf("%d\n\n", cars[1].position);
+
+    bool *isWinners = getIsWinners(cars);
+    for (int i = 0; i < ARRAY_SIZE(isWinners); ++i) {
+        if (isWinners[i] == true) {
+            printf("%d\n", i);
+        }
+    }
+    free(isWinners);
     free(cars);
     return 0;
 }
