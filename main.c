@@ -25,10 +25,22 @@ void move(struct Car *car) {
     }
 }
 
+void moveAll(struct Car cars[]) {
+    int count = sizeof(&cars) / sizeof(cars[0]);
+    for (int i = 0; i < count; ++i) {
+        move(&cars[i]);
+    }
+}
+
 int main() {
     setRandomSeed();
-    struct Car car = {1};
-    move(&car);
-    printf("%d", car.position);
+    struct Car cars[2];
+    cars[0].position = 1;
+    cars[1].position = 1;
+
+    moveAll(cars);
+
+    printf("%d\n", cars[0].position);
+    printf("%d", cars[1].position);
     return 0;
 }
