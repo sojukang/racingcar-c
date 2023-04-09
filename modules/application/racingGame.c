@@ -1,9 +1,7 @@
-#include "domain/car.h"
-#include "presentation/response.h"
+#include "../domain/car.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-static void moveAll(Car cars[]) {
+void moveAll(Car cars[]) {
     int count = sizeOf(cars);
     for (int i = 0; i < count; ++i) {
         move(&cars[i]);
@@ -36,16 +34,6 @@ bool *getIsWinners(Car cars[]) {
         }
     }
     return isWinners;
-}
-
-void runRacing(int gameCount, Car *cars) {
-    printf("\n실행 결과\n");
-    for (int i = 0; i < gameCount; ++i) {
-        printRacingStatus(cars);
-        moveAll(cars);
-        printf("\n");
-    }
-    printf("\n");
 }
 
 char **getWinnerNames(const Car *cars, const bool *isWinners) {

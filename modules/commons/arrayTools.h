@@ -1,5 +1,5 @@
-#ifndef ARRAYTOOLS_H
-#define ARRAYTOOLS_H
+#ifndef ARRAY_TOOLS_H
+#define ARRAY_TOOLS_H
 
 int arraySize(char **pString);
 

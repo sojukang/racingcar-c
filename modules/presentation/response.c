@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "../arraytools.h"
-#include "../racingGame.h"
+#include "../commons/arrayTools.h"
+#include "../application/racingGame.h"
 
 static void printCurrentPosition(char progressView, int position) {
     for (int i = 0; i < position; ++i) {
