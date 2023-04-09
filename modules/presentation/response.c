@@ -2,7 +2,7 @@
 #include "../arraytools.h"
 #include "../racingGame.h"
 
-void printCurrentPosition(char progressView, int position) {
+static void printCurrentPosition(char progressView, int position) {
     for (int i = 0; i < position; ++i) {
         printf("%c", progressView);
     }

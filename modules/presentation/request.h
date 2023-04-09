@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-char *requestCarNames() {
+static char *requestCarNames() {
     char *input = NULL;
     size_t size = 0;
     getline(&input, &size, stdin);
@@ -17,7 +17,7 @@ char *requestCarNames() {
     return input;
 }
 
-int getNumberOfCarNames(const char *carNames) {
+static int getNumberOfCarNames(const char *carNames) {
     int count = 1;
     for (int i = 0; i < carNames[i] != '\0'; ++i) {
         if (carNames[i] == ',') {
@@ -33,7 +33,7 @@ int getNumberOfCarNames(const char *carNames) {
  * @param size
  * @return
  */
-char **splitCarNames(char *string, int size) {
+static char **splitCarNames(char *string, int size) {
     char **carNames = malloc((size + 1) * sizeof(char *));
     char *carName = strtok(string, ",");
     int i = 0;

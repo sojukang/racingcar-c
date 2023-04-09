@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void moveAll(Car cars[]) {
+static void moveAll(Car cars[]) {
     int count = sizeOf(cars);
     for (int i = 0; i < count; ++i) {
         move(&cars[i]);

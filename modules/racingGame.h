@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void moveAll(Car cars[]);
+static void moveAll(Car cars[]);
 
 bool *getIsWinners(Car cars[]);
 
