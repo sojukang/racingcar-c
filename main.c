@@ -70,7 +70,10 @@ int main() {
     int gameCount = getGameCount();
     printf("car count: %d\n", arraySize(carNames));
     struct Car *cars = getCars(arraySize(carNames));
-    moveAll(cars);
+
+    for (int i = 0; i < gameCount; ++i) {
+        moveAll(cars);
+    }
 
     for (int j = 0; j < arraySize(carNames); ++j) {
         printf("%d\n", cars[j].position);
