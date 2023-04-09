@@ -1,10 +1,8 @@
-#include <stdlib.h>
-#include <time.h>
+#ifndef RANDOM_H
+#define RANDOM_H
 
-void setRandomSeed() {
-    srand(time(NULL));
-}
+void setRandomSeed();
 
-int randomNumber() {
-    return rand() % 10;
-}
+int randomNumber();
+
+#endif
