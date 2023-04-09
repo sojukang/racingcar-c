@@ -63,6 +63,12 @@ int arraySize(char **pString) {
     return size;
 }
 
+void printCurrentPosition(char progressView, int position) {
+    for (int i = 0; i < position; ++i) {
+        printf("%c", progressView);
+    }
+}
+
 int main() {
     setRandomSeed();
 
@@ -70,21 +76,27 @@ int main() {
     int gameCount = getGameCount();
     struct Car *cars = getCars(arraySize(carNames), carNames);
 
+    printf("실행 결과\n");
     for (int i = 0; i < gameCount; ++i) {
+        for (int j = 0; j < arraySize(carNames); ++j) {
+            printf("%s : ", cars[j].name);
+            printCurrentPosition('-', cars[j].position);
+            printf("\n");
+        }
         moveAll(cars);
+        printf("\n");
     }
 
-    for (int j = 0; j < arraySize(carNames); ++j) {
-        printf("%s : %d\n", cars[j].name, cars[j].position);
-    }
     printf("\n\n");
 
     bool *isWinners = getIsWinners(cars);
     for (int i = 0; i < ARRAY_SIZE(isWinners); ++i) {
         if (isWinners[i] == true) {
-            printf("winner: %s\n", cars[i].name);
+            printf("%s, ", cars[i].name);
+
         }
     }
+    printf("가 최종 우승하였습니다.");
 
     free(carNames);
     free(isWinners);

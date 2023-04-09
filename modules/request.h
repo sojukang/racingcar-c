@@ -7,6 +7,13 @@ char *requestCarNames() {
     char *input = NULL;
     size_t size = 0;
     getline(&input, &size, stdin);
+
+    // remove the carriage return character if it exists
+    char *newline = strchr(input, '\n');
+    if (newline != NULL) {
+        *newline = '\0';
+    }
+
     return input;
 }
 
