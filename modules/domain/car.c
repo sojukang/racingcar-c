@@ -3,13 +3,13 @@
 #include "../random.h"
 
 
-struct Car {
+typedef struct Car {
     int position;
     char *name;
-};
+} Car;
 
-struct Car *getCars(int size, char **carNames) {
-    struct Car *cars = malloc(size * sizeof(struct Car));
+Car *getCars(int size, char **carNames) {
+    Car *cars = malloc(size * sizeof(Car));
     for (int i = 0; i < size; ++i) {
         cars[i].position = 1;
         cars[i].name = carNames[i];
@@ -17,7 +17,7 @@ struct Car *getCars(int size, char **carNames) {
     return cars;
 }
 
-int sizeOf(struct Car *cars) {
+int sizeOf(Car *cars) {
     int i = 0;
     while (cars[i].name != NULL) {
         i++;
@@ -32,8 +32,8 @@ bool canMove(int number) {
     return false;
 }
 
-void move(struct Car *car) {
-    if (canMove(randomNumber())) {
+void move(Car *car) {
+    if (canMove(randomNumber(10))) {
         car->position += 1;
     }
 }

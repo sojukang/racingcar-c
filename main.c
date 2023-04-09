@@ -11,7 +11,7 @@ int main() {
 
     char **carNames = getCarNames();
     int gameCount = getGameCount();
-    struct Car *cars = getCars(arraySize(carNames), carNames);
+    Car *cars = getCars(arraySize(carNames), carNames);
 
     runRacing(gameCount, cars);
 

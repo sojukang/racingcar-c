@@ -5,6 +5,6 @@ void printCurrentPosition(char progressView, int position);
 
 void printWinners(char **winnerNames);
 
-void printRacingStatus(struct Car *cars);
+void printRacingStatus(Car *cars);
 
 #endif

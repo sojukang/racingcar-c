@@ -3,17 +3,17 @@
 
 #include <stdbool.h>
 
-struct Car {
+typedef struct Car {
     int position;
     char *name;
-};
+} Car;
 
-struct Car *getCars(int size, char **carNames);
+Car *getCars(int size, char **carNames);
 
-int sizeOf(struct Car *cars);
+int sizeOf(Car *cars);
 
 bool canMove(int number);
 
-void move(struct Car *car);
+void move(Car *car);
 
 #endif

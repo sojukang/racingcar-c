@@ -7,12 +7,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void moveAll(struct Car cars[]);
+void moveAll(Car cars[]);
 
-bool *getIsWinners(struct Car cars[]);
+bool *getIsWinners(Car cars[]);
 
-void runRacing(int gameCount, struct Car *cars);
+void runRacing(int gameCount, Car *cars);
 
-char **getWinnerNames(const struct Car *cars, const bool *isWinners);
+char **getWinnerNames(const Car *cars, const bool *isWinners);
 
 #endif

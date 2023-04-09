@@ -3,6 +3,6 @@
 
 void setRandomSeed();
 
-int randomNumber();
+int randomNumber(int upperBound);
 
 #endif

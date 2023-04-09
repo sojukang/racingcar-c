@@ -1,17 +1,16 @@
 #include "domain/car.h"
-#include "arraytools.h"
 #include "presentation/response.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-void moveAll(struct Car cars[]) {
+void moveAll(Car cars[]) {
     int count = sizeOf(cars);
     for (int i = 0; i < count; ++i) {
         move(&cars[i]);
     }
 }
 
-bool *getIsWinners(struct Car cars[]) {
+bool *getIsWinners(Car cars[]) {
     int size = sizeOf(cars);
     int maxPosition = cars[0].position;
     for (int i = 0; i < size; ++i) {
@@ -39,7 +38,7 @@ bool *getIsWinners(struct Car cars[]) {
     return isWinners;
 }
 
-void runRacing(int gameCount, struct Car *cars) {
+void runRacing(int gameCount, Car *cars) {
     printf("\n실행 결과\n");
     for (int i = 0; i < gameCount; ++i) {
         printRacingStatus(cars);
@@ -49,9 +48,10 @@ void runRacing(int gameCount, struct Car *cars) {
     printf("\n");
 }
 
-char **getWinnerNames(const struct Car *cars, const bool *isWinners) {
+char **getWinnerNames(const Car *cars, const bool *isWinners) {
     int winnerCount = 0;
-    for (int i = 0; i < ARRAY_SIZE(isWinners); ++i) {
+    size_t sizeOfIsWinners = (sizeof(&isWinners) / sizeof(isWinners[0]));
+    for (int i = 0; i < sizeOfIsWinners; ++i) {
         if (isWinners[i]) {
             winnerCount++;
         }
@@ -59,7 +59,7 @@ char **getWinnerNames(const struct Car *cars, const bool *isWinners) {
 
     char **winnerNames = malloc(winnerCount * sizeof(char *));
     int j = 0;
-    for (int i = 0; i < ARRAY_SIZE(isWinners); ++i) {
+    for (int i = 0; i < sizeOfIsWinners; ++i) {
         if (isWinners[i]) {
             winnerNames[j] = cars[i].name;
         }

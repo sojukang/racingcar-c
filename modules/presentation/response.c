@@ -14,7 +14,7 @@ void printWinners(char *winnerNames[]) {
     free(winnerNameDisplayForm);
 }
 
-void printRacingStatus(struct Car *cars) {
+void printRacingStatus(Car *cars) {
     int size = sizeOf(cars);
     for (int i = 0; i < size; ++i) {
         printf("%s : ", cars[i].name);
