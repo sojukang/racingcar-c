@@ -5,7 +5,7 @@
 #include "modules/random.h"
 #include "modules/request.h"
 
-#define ARRAY_SIZE(array) (sizeof(&array) / sizeof((array)[0]))
+#define ARRAY_SIZE(array) (sizeof(&array) / sizeof(array[0]))
 
 bool canMove(int number) {
     if (number >= 4) {
@@ -55,17 +55,27 @@ bool *getIsWinners(struct Car cars[]) {
     return isWinners;
 }
 
+int arraySize(char **pString) {
+    int size = 0;
+    while (pString[size] != NULL && strlen(pString[size]) > 0) {
+        size++;
+    }
+    return size;
+}
 
 int main() {
     setRandomSeed();
 
     char **carNames = getCarNames();
     int gameCount = getGameCount();
-    struct Car *cars = getCars(2);
+    printf("car count: %d\n", arraySize(carNames));
+    struct Car *cars = getCars(arraySize(carNames));
     moveAll(cars);
 
-    printf("%d\n", cars[0].position);
-    printf("%d\n\n", cars[1].position);
+    for (int j = 0; j < arraySize(carNames); ++j) {
+        printf("%d\n", cars[j].position);
+    }
+    printf("\n\n");
 
     bool *isWinners = getIsWinners(cars);
     for (int i = 0; i < ARRAY_SIZE(isWinners); ++i) {

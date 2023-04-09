@@ -20,14 +20,21 @@ int getNumberOfCarNames(const char *carNames) {
     return count;
 }
 
+/***
+ * if a value of array remains uninitialized, it could be unintentional binary based on OS
+ * @param string
+ * @param size
+ * @return
+ */
 char **splitCarNames(char *string, int size) {
-    char **carNames = malloc(size * sizeof(char *));
+    char **carNames = malloc((size + 1) * sizeof(char *));
     char *carName = strtok(string, ",");
     int i = 0;
     while (carName != NULL && i < size) {
         carNames[i++] = strdup(carName);
         carName = strtok(NULL, ",");
     }
+    carNames[i] = NULL;
     return carNames;
 }
 
