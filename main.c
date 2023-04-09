@@ -21,14 +21,14 @@ void move(struct Car *car) {
 }
 
 void moveAll(struct Car cars[]) {
-    int count = sizeof(&cars) / sizeof(cars[0]);
+    int count = sizeOf(cars);
     for (int i = 0; i < count; ++i) {
         move(&cars[i]);
     }
 }
 
 bool *getIsWinners(struct Car cars[]) {
-    int size = sizeof(&cars) / sizeof(cars[0]);
+    int size = sizeOf(cars);
     int maxPosition = cars[0].position;
     for (int i = 0; i < size; ++i) {
         if (cars[i].position > maxPosition) {
@@ -68,22 +68,21 @@ int main() {
 
     char **carNames = getCarNames();
     int gameCount = getGameCount();
-    printf("car count: %d\n", arraySize(carNames));
-    struct Car *cars = getCars(arraySize(carNames));
+    struct Car *cars = getCars(arraySize(carNames), carNames);
 
     for (int i = 0; i < gameCount; ++i) {
         moveAll(cars);
     }
 
     for (int j = 0; j < arraySize(carNames); ++j) {
-        printf("%d\n", cars[j].position);
+        printf("%s : %d\n", cars[j].name, cars[j].position);
     }
     printf("\n\n");
 
     bool *isWinners = getIsWinners(cars);
     for (int i = 0; i < ARRAY_SIZE(isWinners); ++i) {
         if (isWinners[i] == true) {
-            printf("%d\n", i);
+            printf("winner: %s\n", cars[i].name);
         }
     }
 
