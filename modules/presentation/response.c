@@ -19,6 +19,6 @@ void printRacingStatus(Car *cars) {
     for (int i = 0; i < size; ++i) {
         printf("%s : ", cars[i].name);
         printCurrentPosition('-', cars[i].position);
-        printf("\n");
+        PRINT_NEW_LINE;
     }
 }
