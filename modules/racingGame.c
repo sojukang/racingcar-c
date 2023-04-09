@@ -39,17 +39,14 @@ bool *getIsWinners(struct Car cars[]) {
     return isWinners;
 }
 
-void runRacing(char **carNames, int gameCount, struct Car *cars) {
+void runRacing(int gameCount, struct Car *cars) {
     printf("\n실행 결과\n");
     for (int i = 0; i < gameCount; ++i) {
-        for (int j = 0; j < arraySize(carNames); ++j) {
-            printf("%s : ", cars[j].name);
-            printCurrentPosition('-', cars[j].position);
-            printf("\n");
-        }
+        printRacingStatus(cars);
         moveAll(cars);
         printf("\n");
     }
+    printf("\n");
 }
 
 char **getWinnerNames(const struct Car *cars, const bool *isWinners) {

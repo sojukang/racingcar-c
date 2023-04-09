@@ -11,7 +11,7 @@ void moveAll(struct Car cars[]);
 
 bool *getIsWinners(struct Car cars[]);
 
-void runRacing(char **carNames, int gameCount, struct Car *cars);
+void runRacing(int gameCount, struct Car *cars);
 
 char **getWinnerNames(const struct Car *cars, const bool *isWinners);
 

@@ -13,7 +13,7 @@ int main() {
     int gameCount = getGameCount();
     struct Car *cars = getCars(arraySize(carNames), carNames);
 
-    runRacing(carNames, gameCount, cars);
+    runRacing(gameCount, cars);
 
     bool *isWinners = getIsWinners(cars);
     char **winnerNames = getWinnerNames(cars, isWinners);
