@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../arraytools.h"
 #include "../racingGame.h"
 
 void printCurrentPosition(char progressView, int position) {
@@ -7,11 +8,10 @@ void printCurrentPosition(char progressView, int position) {
     }
 }
 
-void printWinners(char **winnerNames) {
-    for (int i = 0; i < arraySize(winnerNames); ++i) {
-        printf("%s, ", winnerNames[i]);
-    }
-    printf("가 최종 우승하였습니다.");
+void printWinners(char *winnerNames[]) {
+    char *winnerNameDisplayForm = join(winnerNames, ",", arraySize(winnerNames));
+    printf("%s가 최종 우승하였습니다.", winnerNameDisplayForm);
+    free(winnerNameDisplayForm);
 }
 
 void printRacingStatus(struct Car *cars) {

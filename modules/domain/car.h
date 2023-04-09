@@ -2,6 +2,7 @@
 #define CAR_H
 
 #include <stdbool.h>
+
 struct Car {
     int position;
     char *name;
