@@ -3,4 +3,6 @@
 
 void printCurrentPosition(char progressView, int position);
 
+void printWinners(char** winnerNames);
+
 #endif
